@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="navbar">All the tasks</h1>
+
+  <div class="list">
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <% if task.completed%>
+          <i class="far fa-check-square"></i>
+          <% else  %>
+          <i class="fal fa-square"></i>
+          <% end  %>
+          <%= link_to task.title, task_path(task) %>
+
+          <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" }  do %>
+          <i class="fas fa-trash"></i>
+          <% end%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to "add a new Task", new_task_path %>
+</div>
